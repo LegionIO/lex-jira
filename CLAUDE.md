@@ -10,7 +10,7 @@ Legion Extension that connects LegionIO to Jira via the REST API v3 and Agile AP
 
 **GitHub**: https://github.com/LegionIO/lex-jira
 **License**: MIT
-**Version**: 0.1.0
+**Version**: 0.1.2
 
 ## Architecture
 
