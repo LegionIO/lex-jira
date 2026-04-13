@@ -33,7 +33,7 @@ RSpec.describe Legion::Extensions::Jira::Webhooks::Runners::Webhooks do
       end
       result = instance.register_webhooks(
         webhooks: [{ jqlFilter: 'project = PROJ', events: ['jira:issue_created'] }],
-        url: 'https://example.com/webhook'
+        url:      'https://example.com/webhook'
       )
       expect(result[:result]).to have_key('webhookRegistrationResult')
     end

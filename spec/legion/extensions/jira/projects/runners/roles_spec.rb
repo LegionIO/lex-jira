@@ -29,7 +29,7 @@ RSpec.describe Legion::Extensions::Jira::Projects::Runners::Roles do
     it 'returns a project role' do
       stubs.get('/rest/api/3/project/PROJ/role/10001') do
         [200, { 'Content-Type' => 'application/json' },
-         { 'id' => 10001, 'name' => 'Developers', 'actors' => [] }]
+         { 'id' => 10_001, 'name' => 'Developers', 'actors' => [] }]
       end
       result = instance.get_project_role(project_key: 'PROJ', role_id: '10001')
       expect(result[:role]['name']).to eq('Developers')
@@ -39,17 +39,17 @@ RSpec.describe Legion::Extensions::Jira::Projects::Runners::Roles do
   describe '#set_role_actors' do
     it 'replaces role actors' do
       stubs.put('/rest/api/3/project/PROJ/role/10001') do
-        [200, { 'Content-Type' => 'application/json' }, { 'id' => 10001, 'actors' => [] }]
+        [200, { 'Content-Type' => 'application/json' }, { 'id' => 10_001, 'actors' => [] }]
       end
       result = instance.set_role_actors(project_key: 'PROJ', role_id: '10001', user_account_ids: ['abc'])
-      expect(result[:role]['id']).to eq(10001)
+      expect(result[:role]['id']).to eq(10_001)
     end
   end
 
   describe '#add_role_actors' do
     it 'adds actors to a role' do
       stubs.post('/rest/api/3/project/PROJ/role/10001') do
-        [200, { 'Content-Type' => 'application/json' }, { 'id' => 10001, 'actors' => [{ 'actorUser' => {} }] }]
+        [200, { 'Content-Type' => 'application/json' }, { 'id' => 10_001, 'actors' => [{ 'actorUser' => {} }] }]
       end
       result = instance.add_role_actors(project_key: 'PROJ', role_id: '10001', user_account_ids: ['abc'])
       expect(result[:role]['actors']).to be_an(Array)

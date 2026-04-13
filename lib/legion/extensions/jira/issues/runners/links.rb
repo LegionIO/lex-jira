@@ -12,8 +12,8 @@ module Legion
 
             def create_issue_link(type_name:, inward_issue:, outward_issue:, comment: nil, **)
               body = {
-                type: { name: type_name },
-                inwardIssue: { key: inward_issue },
+                type:         { name: type_name },
+                inwardIssue:  { key: inward_issue },
                 outwardIssue: { key: outward_issue }
               }
               body[:comment] = { body: comment } if comment
@@ -42,7 +42,7 @@ module Legion
             end
 
             include Legion::Extensions::Helpers::Lex if Legion::Extensions.const_defined?(:Helpers, false) &&
-                                                         Legion::Extensions::Helpers.const_defined?(:Lex, false)
+                                                        Legion::Extensions::Helpers.const_defined?(:Lex, false)
           end
         end
       end

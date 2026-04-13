@@ -4,6 +4,7 @@ module RunnerTestHarness
   def self.build(*runner_modules)
     klass = Class.new do
       include Legion::Extensions::Jira::Helpers::Client
+
       runner_modules.each { |mod| include mod }
 
       attr_reader :opts

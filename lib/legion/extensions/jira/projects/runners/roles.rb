@@ -25,7 +25,7 @@ module Legion
               body['atlassian-user-role-actor'] = user_account_ids unless user_account_ids.empty?
               body['atlassian-group-role-actor'] = group_names unless group_names.empty?
               resp = connection(**).put("/rest/api/3/project/#{project_key}/role/#{role_id}",
-                                       { categorisedActors: body })
+                                        { categorisedActors: body })
               { role: resp.body }
             end
 
@@ -46,7 +46,7 @@ module Legion
             end
 
             include Legion::Extensions::Helpers::Lex if Legion::Extensions.const_defined?(:Helpers, false) &&
-                                                         Legion::Extensions::Helpers.const_defined?(:Lex, false)
+                                                        Legion::Extensions::Helpers.const_defined?(:Lex, false)
           end
         end
       end

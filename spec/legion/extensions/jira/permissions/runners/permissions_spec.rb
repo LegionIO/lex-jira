@@ -61,7 +61,7 @@ RSpec.describe Legion::Extensions::Jira::Permissions::Runners::Permissions do
     it 'checks bulk permissions' do
       stubs.post('/rest/api/3/permissions/check') do
         [200, { 'Content-Type' => 'application/json' },
-         { 'projectPermissions' => [{ 'permission' => 'BROWSE_PROJECTS', 'projects' => [10000] }] }]
+         { 'projectPermissions' => [{ 'permission' => 'BROWSE_PROJECTS', 'projects' => [10_000] }] }]
       end
       result = instance.check_permissions(
         project_permissions: [{ permissions: ['BROWSE_PROJECTS'], projects: [10_000] }]

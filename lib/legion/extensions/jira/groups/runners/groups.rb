@@ -31,7 +31,7 @@ module Legion
               { deleted: [200, 204].include?(resp.status) }
             end
 
-            def add_user_to_group(group_name: nil, group_id: nil, account_id:, **)
+            def add_user_to_group(account_id:, group_name: nil, group_id: nil, **)
               params = {}
               params[:groupname] = group_name if group_name
               params[:groupId] = group_id if group_id
@@ -42,7 +42,7 @@ module Legion
               { group: resp.body }
             end
 
-            def remove_user_from_group(group_name: nil, group_id: nil, account_id:, **)
+            def remove_user_from_group(account_id:, group_name: nil, group_id: nil, **)
               resp = connection(**).delete('/rest/api/3/group/user') do |req|
                 req.params['groupname'] = group_name if group_name
                 req.params['groupId'] = group_id if group_id
@@ -65,7 +65,7 @@ module Legion
             end
 
             include Legion::Extensions::Helpers::Lex if Legion::Extensions.const_defined?(:Helpers, false) &&
-                                                         Legion::Extensions::Helpers.const_defined?(:Lex, false)
+                                                        Legion::Extensions::Helpers.const_defined?(:Lex, false)
           end
         end
       end
