@@ -16,6 +16,19 @@ module Legion
               conn.adapter Faraday.default_adapter
             end
           end
+
+          def upload_connection(url: nil, email: nil, api_token: nil, **_opts)
+            require 'faraday/multipart'
+            base_url = url || 'https://your-org.atlassian.net'
+            Faraday.new(url: base_url) do |conn|
+              conn.request :multipart
+              conn.request :url_encoded
+              conn.response :json, content_type: /\bjson$/
+              conn.request :authorization, :basic, email, api_token if email && api_token
+              conn.headers['X-Atlassian-Token'] = 'no-check'
+              conn.adapter Faraday.default_adapter
+            end
+          end
         end
       end
     end
