@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'faraday', '>= 2.0'
+  spec.add_dependency 'faraday-multipart', '>= 1.0'
   spec.add_dependency 'legion-cache',     '>= 1.3.11'
   spec.add_dependency 'legion-crypt',     '>= 1.4.9'
   spec.add_dependency 'legion-data',      '>= 1.4.17'
